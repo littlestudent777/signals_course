@@ -14,7 +14,7 @@ $$H=\begin{bmatrix}
 \end{bmatrix}$$
 
 Приведем элементарными преобразованиями к систематическому виду:
-1) Переставим местами строки -> (2, 3, 4, 5, 6, 7, 8, 1)
+1) Переставим местами столбцы -> (2, 3, 4, 5, 6, 7, 8, 1)
 
 $$H_{sys}=\begin{bmatrix}
 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\
@@ -126,10 +126,11 @@ $\Rightarrow$ $d_{min} = 4$
 ```
 
 Расстояния между КС найдём с помощью скрипта:
-```python 
-distances = np.zeros((len(codewords), len(codewords)), dtype=int)
-for i in range(len(codewords)):
-    for j in range(len(codewords)):
+```python
+k = len(codewords)
+distances = np.zeros(k, k), dtype=int)
+for i in range(k):
+    for j in range(k):
         if i <= j:  # вычисляем только для i<=j, так как матрица симметрична
             # Расстояние Хэмминга = вес(c_i XOR c_j)
             dist = np.sum(np.bitwise_xor(codewords[i], codewords[j]))
